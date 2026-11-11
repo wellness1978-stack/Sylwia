@@ -193,6 +193,9 @@
   .cta { margin-top: auto; margin-bottom: 6mm; padding: 8mm; display: grid; grid-template-columns: 1fr 38mm; gap: 6mm; align-items: center; }
   .cta h3 { font-size: 23pt; letter-spacing: -0.03em; line-height: 1.08; }
   .cta p { font-size: 10pt; line-height: 1.45; color: var(--stone-700); margin-top: 3mm; max-width: 120mm; }
+  .contact { display: flex; align-items: center; gap: 4mm; margin-top: 6mm; padding-top: 5mm; border-top: 1px solid var(--line-strong); }
+  .contact-label { font-size: 11pt; color: var(--ink); }
+  .contact .btn { text-decoration: none; font-size: 11pt; padding: 3mm 6mm; letter-spacing: .01em; }
 </style>
 </head>
 <body>
@@ -425,6 +428,11 @@
     <div>
       <h3>Dopasujemy szkolenie do Waszego zespołu</h3>
       <p>Ćwiczenia możemy oprzeć na Waszych produktach, danych i identyfikacji wizualnej albo wybrać tylko te części, których potrzebujecie.</p>
+      <!-- KONTAKT: wypełniany przez build.js z kontakt.local.json (plik poza repo) -->
+      <div class="contact">
+        <span class="contact-label">{{KONTAKT_TEKST}}</span>
+        <a class="btn dark" href="tel:{{TELEFON_HREF}}">{{TELEFON}}</a>
+      </div>
     </div>
     <div class="sphere s-merlot" style="width:36mm;height:36mm;justify-self:end"></div>
   </div>

@@ -4,3 +4,6 @@ data/
 .env
 __pycache__/
 .DS_Store
+# oferty: dane kontaktowe i wygenerowane PDF-y (mogą zawierać numer telefonu)
+oferty/**/kontakt.local.json
+oferty/**/*.pdf
