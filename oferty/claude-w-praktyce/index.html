@@ -69,62 +69,18 @@
   .btn.dark { background: var(--ink); color: #fff; }
   .btn.light { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
 
-  /* kule z płynnym gradientem */
-  .sphere { border-radius: 50%; position: relative; flex: none; }
-  .sphere::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
-    background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.55), rgba(255,255,255,0) 38%),
-                radial-gradient(circle at 70% 85%, rgba(0,0,0,.12), rgba(0,0,0,0) 45%); }
-  /* kule w odcieniach bordo: wino, merlot, róż, mauve, blush */
-  .s-wine { background:
-      radial-gradient(ellipse 60% 45% at 62% 30%, #e19aa4 0%, rgba(225,154,164,0) 70%),
-      radial-gradient(ellipse 55% 60% at 25% 68%, #4e1022 0%, rgba(78,16,34,0) 70%),
-      radial-gradient(ellipse 45% 40% at 78% 74%, #b24a5c 0%, rgba(178,74,92,0) 70%),
-      #8a2a3e; }
-  .s-merlot { background:
-      radial-gradient(ellipse 55% 45% at 36% 30%, #b0586a 0%, rgba(176,88,106,0) 70%),
-      radial-gradient(ellipse 55% 55% at 68% 66%, #2a0812 0%, rgba(42,8,18,0) 70%),
-      radial-gradient(ellipse 40% 38% at 26% 74%, #7a2236 0%, rgba(122,34,54,0) 70%),
-      #561626; }
-  .s-rose { background:
-      radial-gradient(ellipse 55% 50% at 35% 33%, #fbecec 0%, rgba(251,236,236,0) 70%),
-      radial-gradient(ellipse 55% 50% at 66% 66%, #b8687a 0%, rgba(184,104,122,0) 70%),
-      radial-gradient(ellipse 40% 40% at 25% 70%, #ecc4c9 0%, rgba(236,196,201,0) 70%),
-      #d9a1aa; }
-  .s-mauve { background:
-      radial-gradient(ellipse 55% 50% at 38% 32%, #f0d9dd 0%, rgba(240,217,221,0) 70%),
-      radial-gradient(ellipse 55% 50% at 66% 68%, #6e3646 0%, rgba(110,54,70,0) 70%),
-      radial-gradient(ellipse 40% 40% at 26% 70%, #c58f9b 0%, rgba(197,143,155,0) 70%),
-      #a06f7c; }
-  .s-blush { background:
-      radial-gradient(ellipse 55% 50% at 40% 35%, #ffffff 0%, rgba(255,255,255,0) 70%),
-      radial-gradient(ellipse 50% 50% at 65% 70%, #e2b9bf 0%, rgba(226,185,191,0) 70%),
-      radial-gradient(ellipse 45% 45% at 25% 65%, #f6e1dc 0%, rgba(246,225,220,0) 70%),
-      #f0dcdc; }
+  .s-rose { background: #d9a1aa; }
+  .s-wine { background: #b24a5c; }
+  .s-merlot { background: #7a2236; }
+  svg text { font-family: "Inter", sans-serif; }
 
   /* ---------- strona 1 ---------- */
   .p1-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8mm; align-items: end; margin-top: 12mm; }
   .p1-head .lead { padding-bottom: 2mm; }
   .p1-actions { display: flex; gap: 2.5mm; margin-top: 7mm; }
   .panel { background: var(--cream); border-radius: var(--r-card); box-shadow: 0 0 0 1px var(--line); }
-  .showcase { margin-top: 10mm; padding: 1.6mm; flex: 1; display: flex; flex-direction: column; }
-  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6mm; }
-  .tab { text-align: center; font-size: 9.5pt; padding: 3mm 0; border-radius: var(--r-sm); color: var(--stone-500);
-    display: flex; align-items: center; justify-content: center; gap: 2mm; }
-  .tab.on { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(0,0,0,.04); }
-  .tab i { width: 2.6mm; height: 2.6mm; border-radius: 50%; display: inline-block; }
-  .stage { flex: 1; margin-top: 1.6mm; border-radius: var(--r-sm); background: var(--cream);
-    box-shadow: inset 0 0 0 1px var(--line); position: relative; overflow: hidden;
-    display: flex; flex-direction: column; justify-content: center; }
-  .carousel { display: flex; align-items: center; justify-content: center; gap: 8mm; position: relative; }
-  .carousel .edge { opacity: .55; }
-  .cap { text-align: center; margin-top: 6mm; display: grid; grid-template-columns: 1fr 1.25fr 1fr; padding: 0 12mm; gap: 4mm; }
-  .cap b { display: block; font-weight: 400; font-size: 10pt; }
-  .cap span { display: block; font-size: 8pt; color: var(--stone-400); margin-top: 1mm; line-height: 1.35; }
-  .cap .on b { color: var(--ink); }
-  .cap > div:not(.on) b { color: var(--stone-500); }
-  .chips { display: flex; justify-content: center; gap: 1.5mm; margin-top: 8mm; flex-wrap: wrap; padding: 0 6mm; }
-  .chip { font-size: 8.5pt; padding: 2mm 3.5mm; border-radius: 9999px; color: var(--stone-500); }
-  .chip.on { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+  .showcase { margin-top: 10mm; padding: 4mm; flex: 1; display: flex; min-height: 0; }
+  .showcase .net { flex: 1; width: 100%; height: 100%; min-height: 0; }
 
   .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8mm; border-top: 1px solid var(--line); }
   .stat { padding: 4mm 0 0; }
@@ -199,6 +155,7 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><radialGradient id="b-rose" cx="34%" cy="28%" r="78%"><stop offset="0%" stop-color="#fbe9ea"/><stop offset="45%" stop-color="#d9a1aa"/><stop offset="100%" stop-color="#a8616f"/></radialGradient><radialGradient id="b-wine" cx="34%" cy="28%" r="78%"><stop offset="0%" stop-color="#e9a3ad"/><stop offset="45%" stop-color="#8a2a3e"/><stop offset="100%" stop-color="#4a0f20"/></radialGradient><radialGradient id="b-merlot" cx="34%" cy="28%" r="78%"><stop offset="0%" stop-color="#b0586a"/><stop offset="45%" stop-color="#561626"/><stop offset="100%" stop-color="#1f050c"/></radialGradient><radialGradient id="b-ink" cx="34%" cy="28%" r="78%"><stop offset="0%" stop-color="#777777"/><stop offset="45%" stop-color="#111111"/><stop offset="100%" stop-color="#000000"/></radialGradient><radialGradient id="b-shadow"><stop offset="0%" stop-color="#561626" stop-opacity=".30"/><stop offset="100%" stop-color="#561626" stop-opacity="0"/></radialGradient></defs></svg>
 
 <!-- ============ STRONA 1 ============ -->
 <section class="page">
@@ -213,30 +170,9 @@
   </div>
 
   <div class="panel showcase">
-    <div class="tabs">
-      <div class="tab on"><i class="s-wine"></i>Część 1</div>
-      <div class="tab"><i class="s-merlot"></i>Część 2</div>
-      <div class="tab"><i class="s-rose"></i>Część 3</div>
-    </div>
-    <div class="stage">
-      <div class="carousel">
-        <div class="sphere s-rose edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
-        <div class="sphere s-merlot" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-wine" style="width:48mm;height:48mm">
-        </div>
-        <div class="sphere s-mauve" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-blush edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
-      </div>
-      <div class="cap">
-        <div><b>Claude Code</b><span>Folder, który pamięta ustalenia</span></div>
-        <div class="on"><b>Claude na co dzień ↗</b><span>Ustawienia, polecenia i research, które dają wiarygodne wyniki</span></div>
-        <div><b>Pracownia</b><span>Strona, zaproszenie i animacja</span></div>
-      </div>
-      <div class="chips">
-        <span class="chip on">Instrukcje</span><span class="chip">Projekty</span><span class="chip">Research</span><span class="chip">Dashboard</span><span class="chip">Komunikaty</span><span class="chip">Audio i wideo</span>
-      </div>
-    </div>
+    <svg class="net" viewBox="0 0 700 580" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Część 1, 2, 3, Efekt"><line x1="70" y1="170" x2="150" y2="330" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="230" y1="480" x2="150" y2="330" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="250" y1="60" x2="330" y2="200" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="420" y1="70" x2="330" y2="200" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="400" y1="500" x2="500" y2="350" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="620" y1="470" x2="500" y2="350" stroke="#6e3646" stroke-opacity=".45" stroke-width="2" stroke-linecap="round"/><line x1="150" y1="330" x2="330" y2="200" stroke="#6e3646" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/><line x1="330" y1="200" x2="500" y2="350" stroke="#6e3646" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/><line x1="500" y1="350" x2="610" y2="150" stroke="#6e3646" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/><ellipse cx="72.2" cy="188.7" rx="17.1" ry="4.0" fill="url(#b-shadow)"/><circle cx="70" cy="170" r="18" fill="url(#b-rose)"/><ellipse cx="64.2" cy="162.4" rx="4.7" ry="2.7" fill="#fff" fill-opacity=".45" transform="rotate(-28 64.2 162.4)"/><ellipse cx="232.9" cy="505.0" rx="22.8" ry="5.3" fill="url(#b-shadow)"/><circle cx="230" cy="480" r="24" fill="url(#b-rose)"/><ellipse cx="222.3" cy="469.9" rx="6.2" ry="3.6" fill="#fff" fill-opacity=".45" transform="rotate(-28 222.3 469.9)"/><ellipse cx="252.0" cy="77.7" rx="16.1" ry="3.7" fill="url(#b-shadow)"/><circle cx="250" cy="60" r="17" fill="url(#b-wine)"/><ellipse cx="244.6" cy="52.9" rx="4.4" ry="2.5" fill="#fff" fill-opacity=".45" transform="rotate(-28 244.6 52.9)"/><ellipse cx="422.6" cy="92.9" rx="20.9" ry="4.8" fill="url(#b-shadow)"/><circle cx="420" cy="70" r="22" fill="url(#b-wine)"/><ellipse cx="413.0" cy="60.8" rx="5.7" ry="3.3" fill="#fff" fill-opacity=".45" transform="rotate(-28 413.0 60.8)"/><ellipse cx="402.4" cy="520.8" rx="19.0" ry="4.4" fill="url(#b-shadow)"/><circle cx="400" cy="500" r="20" fill="url(#b-merlot)"/><ellipse cx="393.6" cy="491.6" rx="5.2" ry="3.0" fill="#fff" fill-opacity=".45" transform="rotate(-28 393.6 491.6)"/><ellipse cx="623.0" cy="496.0" rx="23.8" ry="5.5" fill="url(#b-shadow)"/><circle cx="620" cy="470" r="25" fill="url(#b-merlot)"/><ellipse cx="612.0" cy="459.5" rx="6.5" ry="3.8" fill="#fff" fill-opacity=".45" transform="rotate(-28 612.0 459.5)"/><ellipse cx="157.4" cy="394.5" rx="58.9" ry="13.6" fill="url(#b-shadow)"/><circle cx="150" cy="330" r="62" fill="url(#b-rose)"/><ellipse cx="130.2" cy="304.0" rx="16.1" ry="9.3" fill="#fff" fill-opacity=".45" transform="rotate(-28 130.2 304.0)"/><text x="150" y="420" text-anchor="middle" font-size="13" fill="#777169">Część 1</text><ellipse cx="338.6" cy="274.9" rx="68.4" ry="15.8" fill="url(#b-shadow)"/><circle cx="330" cy="200" r="72" fill="url(#b-wine)"/><ellipse cx="307.0" cy="169.8" rx="18.7" ry="10.8" fill="#fff" fill-opacity=".45" transform="rotate(-28 307.0 169.8)"/><text x="330" y="300" text-anchor="middle" font-size="13" fill="#777169">Część 2</text><ellipse cx="507.9" cy="418.6" rx="62.7" ry="14.5" fill="url(#b-shadow)"/><circle cx="500" cy="350" r="66" fill="url(#b-merlot)"/><ellipse cx="478.9" cy="322.3" rx="17.2" ry="9.9" fill="#fff" fill-opacity=".45" transform="rotate(-28 478.9 322.3)"/><text x="500" y="444" text-anchor="middle" font-size="13" fill="#777169">Część 3</text><ellipse cx="614.8" cy="191.6" rx="38.0" ry="8.8" fill="url(#b-shadow)"/><circle cx="610" cy="150" r="40" fill="url(#b-ink)"/><ellipse cx="597.2" cy="133.2" rx="10.4" ry="6.0" fill="#fff" fill-opacity=".45" transform="rotate(-28 597.2 133.2)"/><text x="610" y="96" text-anchor="middle" font-size="13" fill="#777169">Efekt</text></svg>
   </div>
+
 
   <div class="stats">
     <div class="stat"><b>20</b><span>praktycznych modułów</span></div>
@@ -271,7 +207,7 @@
   </div>
 
   <div class="panel feature">
-    <div class="sphere s-wine" style="width:32mm;height:32mm"></div>
+    <svg viewBox="0 0 140 140" style="width:34mm;height:34mm;"><line x1="52" y1="84" x2="106" y2="40" stroke="#6e3646" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><line x1="52" y1="84" x2="114" y2="114" stroke="#6e3646" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><ellipse cx="108.4" cy="60.8" rx="19.0" ry="4.4" fill="url(#b-shadow)"/><circle cx="106" cy="40" r="20" fill="url(#b-rose)"/><ellipse cx="99.6" cy="31.6" rx="5.2" ry="3.0" fill="#fff" fill-opacity=".45" transform="rotate(-28 99.6 31.6)"/><ellipse cx="115.7" cy="128.6" rx="13.3" ry="3.1" fill="url(#b-shadow)"/><circle cx="114" cy="114" r="14" fill="url(#b-merlot)"/><ellipse cx="109.5" cy="108.1" rx="3.6" ry="2.1" fill="#fff" fill-opacity=".45" transform="rotate(-28 109.5 108.1)"/><ellipse cx="56.3" cy="121.4" rx="34.2" ry="7.9" fill="url(#b-shadow)"/><circle cx="52" cy="84" r="36" fill="url(#b-wine)"/><ellipse cx="40.5" cy="68.9" rx="9.4" ry="5.4" fill="#fff" fill-opacity=".45" transform="rotate(-28 40.5 68.9)"/></svg>
     <div>
       <h3>Warsztat, nie wykład</h3>
       <p>Każdy moduł kończy się Twoim gotowym rezultatem. Pracujemy na jednym realistycznym scenariuszu biznesowym, a gdy narzędzie zawiedzie, czekają gotowe wyniki zapasowe.</p>
@@ -291,7 +227,7 @@
 
   <div class="cols3">
     <div class="part">
-      <div class="visual"><div class="sphere s-wine" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><svg viewBox="0 0 120 120" style="width:30mm;height:30mm"><ellipse cx="65.3" cy="99.8" rx="41.8" ry="9.7" fill="url(#b-shadow)"/><circle cx="60" cy="54" r="44" fill="url(#b-rose)"/><ellipse cx="45.9" cy="35.5" rx="11.4" ry="6.6" fill="#fff" fill-opacity=".45" transform="rotate(-28 45.9 35.5)"/></svg></div>
       <div class="body">
         <div class="tag">Część 1</div>
         <h3>Claude na co dzień</h3>
@@ -309,7 +245,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-merlot" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><svg viewBox="0 0 120 120" style="width:30mm;height:30mm"><ellipse cx="65.3" cy="99.8" rx="41.8" ry="9.7" fill="url(#b-shadow)"/><circle cx="60" cy="54" r="44" fill="url(#b-wine)"/><ellipse cx="45.9" cy="35.5" rx="11.4" ry="6.6" fill="#fff" fill-opacity=".45" transform="rotate(-28 45.9 35.5)"/></svg></div>
       <div class="body">
         <div class="tag">Część 2</div>
         <h3>Claude Code jako biuro projektu</h3>
@@ -327,7 +263,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-rose" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><svg viewBox="0 0 120 120" style="width:30mm;height:30mm"><ellipse cx="65.3" cy="99.8" rx="41.8" ry="9.7" fill="url(#b-shadow)"/><circle cx="60" cy="54" r="44" fill="url(#b-merlot)"/><ellipse cx="45.9" cy="35.5" rx="11.4" ry="6.6" fill="#fff" fill-opacity=".45" transform="rotate(-28 45.9 35.5)"/></svg></div>
       <div class="body">
         <div class="tag">Część 3</div>
         <h3>Pracownia materiałów</h3>
@@ -359,7 +295,7 @@
 
   <div class="modules">
     <div>
-      <div class="phase"><i class="s-wine"></i>Część 1 · Claude na co dzień</div>
+      <div class="phase"><i class="s-rose"></i>Część 1 · Claude na co dzień</div>
       <div class="mod"><span class="n">01</span><div><h4>Konfiguracja i instrukcje globalne</h4><ul><li>Warstwy instrukcji: fakty, założenia, rekomendacje</li><li>Ochrona zweryfikowanych wartości</li><li class="ex"><b>Ćwiczenie:</b> własna instrukcja przetestowana w nowej rozmowie</li></ul></div></div>
       <div class="mod"><span class="n">02</span><div><h4>Projekty i wiedza z dokumentów</h4><ul><li>Instrukcje projektu i mapa źródeł</li><li>Pytania bez pokrycia, sprzeczne i nieaktualne dokumenty</li><li class="ex"><b>Ćwiczenie:</b> projekt, który przyznaje, czego nie wie</li></ul></div></div>
       <div class="mod"><span class="n">03</span><div><h4>Polecenia i krytyka</h4><ul><li>Kontekst, odbiorca, ograniczenia i format wyniku</li><li>Krytyka oddzielona od poprawki</li><li class="ex"><b>Ćwiczenie:</b> polecenie wielokrotnego użytku dla zespołu</li></ul></div></div>
@@ -368,7 +304,7 @@
       <div class="mod"><span class="n">06</span><div><h4>Komunikacja dla odbiorców i kanałów</h4><ul><li>Zarząd, menedżer, sprzedaż; e-mail, ogłoszenie, prezentacja</li><li>Warianty A/B bez niepopartych obietnic</li><li class="ex"><b>Ćwiczenie:</b> pakiet komunikatów z porównaniem wersji</li></ul></div></div>
       <div class="mod"><span class="n">07</span><div><h4>Audio i wideo z AI</h4><ul><li>Narracja lektorska i podkład muzyczny</li><li>Wideo z awatarem i wersją językową</li><li class="ex"><b>Ćwiczenie:</b> porównanie wariantów i plan produkcji</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-merlot"></i>Część 2 · Claude Code jako biuro projektu</div>
+      <div class="phase mt"><i class="s-wine"></i>Część 2 · Claude Code jako biuro projektu</div>
       <div class="mod"><span class="n">08</span><div><h4>Przestrzeń robocza i pierwsze zlecenie</h4><ul><li>Folder projektu zamiast czatu: instrukcja główna i skille</li><li>Wersje plików zamiast nadpisywania</li></ul></div></div>
     </div>
 
@@ -380,7 +316,7 @@
       <div class="mod"><span class="n">13</span><div><h4>Zmiana założeń: Twój osąd a osąd AI</h4><ul><li>Najpierw własna ocena skutków, potem porównanie z Claude</li><li>Aktualizacja pamięci z historią decyzji</li></ul></div></div>
       <div class="mod"><span class="n">14</span><div><h4>Dashboard, który pomaga podjąć decyzję</h4><ul><li>Pytania o decyzję i odbiorcę, zanim powstanie wykres</li><li>Trzy persony, te same dane, zapisane założenia</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-rose"></i>Część 3 · Pracownia materiałów</div>
+      <div class="phase mt"><i class="s-merlot"></i>Część 3 · Pracownia materiałów</div>
       <div class="mod"><span class="n">15</span><div><h4>Ze zrzutu ekranu do strony www</h4><ul><li>Odtworzenie strony z obrazu</li><li>Własne treści, poprawki układu, kolejne wersje</li></ul></div></div>
       <div class="mod"><span class="n">16</span><div><h4>Identyfikacja wizualna firmy</h4><ul><li>Design system jako skill lub Claude Design</li><li>Kolory, typografia, logo i kontrola zgodności</li></ul></div></div>
       <div class="mod"><span class="n">17</span><div><h4>Animowana zapowiedź</h4><ul><li>Scenariusz, rytm, animacja i efekty</li><li>Spójność ze stroną wydarzenia</li></ul></div></div>
@@ -434,7 +370,7 @@
         <a class="btn dark" href="tel:{{TELEFON_HREF}}">{{TELEFON}}</a>
       </div>
     </div>
-    <div class="sphere s-merlot" style="width:36mm;height:36mm;justify-self:end"></div>
+    <svg viewBox="0 0 140 140" style="width:38mm;height:38mm;justify-self:end"><line x1="52" y1="84" x2="106" y2="40" stroke="#6e3646" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><line x1="52" y1="84" x2="114" y2="114" stroke="#6e3646" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><ellipse cx="108.4" cy="60.8" rx="19.0" ry="4.4" fill="url(#b-shadow)"/><circle cx="106" cy="40" r="20" fill="url(#b-rose)"/><ellipse cx="99.6" cy="31.6" rx="5.2" ry="3.0" fill="#fff" fill-opacity=".45" transform="rotate(-28 99.6 31.6)"/><ellipse cx="115.7" cy="128.6" rx="13.3" ry="3.1" fill="url(#b-shadow)"/><circle cx="114" cy="114" r="14" fill="url(#b-merlot)"/><ellipse cx="109.5" cy="108.1" rx="3.6" ry="2.1" fill="#fff" fill-opacity=".45" transform="rotate(-28 109.5 108.1)"/><ellipse cx="56.3" cy="121.4" rx="34.2" ry="7.9" fill="url(#b-shadow)"/><circle cx="52" cy="84" r="36" fill="url(#b-wine)"/><ellipse cx="40.5" cy="68.9" rx="9.4" ry="5.4" fill="#fff" fill-opacity=".45" transform="rotate(-28 40.5 68.9)"/></svg>
   </div>
 
   <div class="footer"><span>Claude w praktyce biznesowej</span><span>05</span></div>
