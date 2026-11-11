@@ -51,6 +51,16 @@ def paragraphs(text):
     return [p for p in re.split(r"\n\s*\n", text) if p.strip()]
 
 
+TEXT_EMOTICON = re.compile(r"(?<!\w)[:;]-?[)(DPp]|xD|XD")
+CAPS_WORD = re.compile(r"\b[A-ZĄĆĘŁŃÓŚŹŻ]{4,}\b")
+NOISE_PAR = re.compile(r"^\s*(?:(?:#\S+|https?://\S+|-{3,}|\W+)\s*)+$")
+
+
+def content_paragraphs(text):
+    """Akapity bez samych hashtagów, linków i separatorów (żeby wykryć prawdziwe zakończenie)."""
+    return [p for p in paragraphs(text) if not NOISE_PAR.match(p.strip())]
+
+
 def section(title, posts):
     n = len(posts)
     out = [f"\n## {title} (n={n})\n"]
@@ -58,7 +68,7 @@ def section(title, posts):
         return out
     texts = [p["text"] for p in posts]
     first_lines = [t.split("\n", 1)[0].strip() for t in texts]
-    last_par = [paragraphs(t)[-1] if paragraphs(t) else "" for t in texts]
+    last_par = [content_paragraphs(t)[-1] if content_paragraphs(t) else "" for t in texts]
     sent_len = [len(s.split()) for t in texts for s in sentences(t)]
     para_lines = [len(pg.split("\n")) for t in texts for pg in paragraphs(t)]
     emojis = Counter(e for t in texts for e in EMOJI.findall(t))
@@ -96,6 +106,17 @@ def section(title, posts):
         "- Zwracanie się do czytelnika (ty/you): " + pct(you, n),
         "- Myślnik pauza '—' w postach: " + pct(sum("—" in t for t in texts), n),
         "- Wykrzykniki na post: " + q([t.count("!") for t in texts]),
+        "- Emotikony tekstowe :) ;-) :D: w %s postów; top: %s" % (
+            pct(sum(bool(TEXT_EMOTICON.search(t)) for t in texts), n),
+            " ".join("%s×%d" % ec for ec in Counter(e for t in texts for e in TEXT_EMOTICON.findall(t)).most_common(6)) or "brak"),
+        "- Dywiz ze spacjami ' - ' jako myślnik: " + pct(sum(" - " in t for t in texts), n),
+        "- Półpauza '–': " + pct(sum("–" in t for t in texts), n),
+        "- Wtrącenia w nawiasach (...) na post: " + q([len(re.findall(r"\([^)]{3,}\)", t)) for t in texts]),
+        "- Słowa WIELKIMI LITERAMI (akcent, 4+ litery): w %s postów; np. %s" % (
+            pct(sum(bool(CAPS_WORD.search(t)) for t in texts), n),
+            ", ".join(sorted({w for t in texts for w in CAPS_WORD.findall(t)})[:15]) or "brak"),
+        "- Wielokropki na post: " + q([t.count("...") + t.count("…") for t in texts]),
+        "- 'Link w (pierwszym) komentarzu': " + pct(sum(bool(re.search(r"(link|namiary).{0,45}komentarz|link in (the )?(first )?comment", t.lower())) for t in texts), n),
     ]
     tells = {k: sum(k in t.lower() for t in texts) for k in AI_TELLS}
     found = ", ".join("'%s'×%d" % kv for kv in tells.items() if kv[1])
