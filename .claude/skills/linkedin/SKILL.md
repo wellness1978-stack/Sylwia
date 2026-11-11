@@ -1,9 +1,9 @@
 ---
-name: linkedin-style-cloner
+name: linkedin
 description: Analizuje posty z dowolnego profilu LinkedIn (na podstawie linku) i tworzy z nich nowy skill do pisania postów w tym stylu, po polsku i po angielsku. Używaj, gdy użytkowniczka prosi o "skill w stylu [osoby/link]", "przeanalizuj styl tego profilu LinkedIn", "sklonuj styl pisania", "zrób skill z postów tego autora" albo wkleja link linkedin.com/in/... z prośbą o styl.
 ---
 
-# LinkedIn Style Cloner
+# LinkedIn: skille stylu z profili
 
 Z linku do profilu LinkedIn tworzysz **jeden skill na jedną osobę**: `.claude/skills/<slug>-voice/`. Ten skill pisze nowe posty na tematy użytkowniczki, korzystając z mechaniki stylu autora (hooki, struktura, rytm, formatowanie, słownictwo), po polsku i po angielsku.
 
@@ -19,7 +19,7 @@ Jeśli użytkowniczka nie podała linku, zapytaj tylko o to: „Podaj link do pr
 ## Krok 2: Pobierz posty
 
 ```bash
-python3 .claude/skills/linkedin-style-cloner/scripts/fetch_posts.py "<URL>" --out data/<slug> --max-posts 60
+python3 .claude/skills/linkedin/scripts/fetch_posts.py "<URL>" --out data/<slug> --max-posts 60
 ```
 
 - Wymaga zmiennej `APIFY_TOKEN`. Jeśli jej brakuje, skrypt kończy się komunikatem. Wtedy wyjaśnij krótko: konto na apify.com → Settings → API & Integrations → skopiuj token → `export APIFY_TOKEN=...` (albo wpisz go do pliku `.env` w repo i uruchom `set -a; source .env; set +a`). Nigdy nie proś o wklejenie tokenu do czatu.
@@ -32,7 +32,7 @@ python3 .claude/skills/linkedin-style-cloner/scripts/fetch_posts.py "<URL>" --ou
 ## Krok 3: Policz metryki
 
 ```bash
-python3 .claude/skills/linkedin-style-cloner/scripts/stats.py data/<slug>/posts.json > data/<slug>/stats.md
+python3 .claude/skills/linkedin/scripts/stats.py data/<slug>/posts.json > data/<slug>/stats.md
 ```
 
 ## Krok 4: Przeczytaj wszystko

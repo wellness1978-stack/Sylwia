@@ -1,4 +1,4 @@
-# LinkedIn Style Cloner
+# LinkedIn: skille stylu z profili
 
 Podajesz link do profilu LinkedIn. Claude pobiera posty tej osoby, analizuje jej styl (hooki, strukturę, rytm, emoji, słownictwo, grafiki) i tworzy **osobny skill**, którym piszesz własne posty w podobnym stylu, po polsku i po angielsku.
 
@@ -36,7 +36,7 @@ link do profilu
 Utworzenie skilla:
 
 ```
-/linkedin-style-cloner https://www.linkedin.com/in/ktos/
+/linkedin https://www.linkedin.com/in/ktos/
 ```
 
 albo po prostu: „zrób skill ze stylu tego profilu: https://www.linkedin.com/in/ktos/”.
@@ -64,7 +64,7 @@ write a LinkedIn post in Ktoś's style about <topic>
 ## Struktura
 
 ```
-.claude/skills/linkedin-style-cloner/
+.claude/skills/linkedin/
 ├── SKILL.md                         instrukcje „aplikacji”
 ├── scripts/fetch_posts.py           pobieranie + normalizacja (Python 3.8+, bez zależności)
 ├── scripts/stats.py                 metryki stylu
