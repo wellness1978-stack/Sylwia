@@ -74,34 +74,32 @@
   .sphere::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
     background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.55), rgba(255,255,255,0) 38%),
                 radial-gradient(circle at 70% 85%, rgba(0,0,0,.12), rgba(0,0,0,0) 45%); }
-  .s-orange { background:
-      radial-gradient(ellipse 60% 45% at 62% 30%, #ffd2a3 0%, rgba(255,210,163,0) 70%),
-      radial-gradient(ellipse 55% 60% at 25% 65%, #c9412f 0%, rgba(201,65,47,0) 70%),
-      radial-gradient(ellipse 50% 40% at 75% 75%, #ff8a5c 0%, rgba(255,138,92,0) 70%),
-      #ff6a3d; }
-  .s-iris { background:
-      radial-gradient(ellipse 55% 45% at 35% 30%, #f6b4ec 0%, rgba(246,180,236,0) 70%),
-      radial-gradient(ellipse 55% 55% at 70% 60%, #9fb6ff 0%, rgba(159,182,255,0) 70%),
-      radial-gradient(ellipse 45% 40% at 30% 75%, #b98af0 0%, rgba(185,138,240,0) 70%),
-      #d9b8f5; }
-  .s-mint { background:
-      radial-gradient(ellipse 55% 50% at 35% 35%, #f3f6f2 0%, rgba(243,246,242,0) 70%),
-      radial-gradient(ellipse 55% 50% at 65% 65%, #a9cdb6 0%, rgba(169,205,182,0) 70%),
-      radial-gradient(ellipse 40% 40% at 25% 70%, #cfe2d6 0%, rgba(207,226,214,0) 70%),
-      #c7d9cc; }
-  .s-cocoa { background:
-      radial-gradient(ellipse 50% 50% at 25% 40%, #c8b4f0 0%, rgba(200,180,240,0) 65%),
-      radial-gradient(ellipse 55% 50% at 60% 60%, #c4734d 0%, rgba(196,115,77,0) 70%),
-      radial-gradient(ellipse 50% 45% at 75% 25%, #3b2a26 0%, rgba(59,42,38,0) 70%),
-      #7a4a3a; }
-  .s-pearl { background:
-      radial-gradient(ellipse 55% 50% at 40% 35%, #fff6e6 0%, rgba(255,246,230,0) 70%),
-      radial-gradient(ellipse 50% 50% at 65% 70%, #cde6e0 0%, rgba(205,230,224,0) 70%),
-      radial-gradient(ellipse 45% 45% at 25% 65%, #f6d9c6 0%, rgba(246,217,198,0) 70%),
-      #eee9e2; }
-  .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 2;
-    width: 12mm; height: 12mm; border-radius: 50%; background: #fff; display: grid; place-items: center; }
-  .play svg { width: 4mm; height: 4mm; margin-left: .6mm; }
+  /* kolory kul z oryginalnej identyfikacji oferty: zieleń, szałwia, terakota, piasek */
+  .s-terra { background:
+      radial-gradient(ellipse 60% 45% at 62% 30%, #f7c9b0 0%, rgba(247,201,176,0) 70%),
+      radial-gradient(ellipse 55% 60% at 25% 68%, #b9573f 0%, rgba(185,87,63,0) 70%),
+      radial-gradient(ellipse 45% 40% at 78% 74%, #eea184 0%, rgba(238,161,132,0) 70%),
+      #df7c5e; }
+  .s-forest { background:
+      radial-gradient(ellipse 55% 45% at 36% 30%, #9cc7ad 0%, rgba(156,199,173,0) 70%),
+      radial-gradient(ellipse 55% 55% at 68% 66%, #173f33 0%, rgba(23,63,51,0) 70%),
+      radial-gradient(ellipse 40% 38% at 26% 74%, #4f8a6f 0%, rgba(79,138,111,0) 70%),
+      #2c6450; }
+  .s-sage { background:
+      radial-gradient(ellipse 55% 50% at 35% 33%, #f1f5ee 0%, rgba(241,245,238,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 66%, #8fb39a 0%, rgba(143,179,154,0) 70%),
+      radial-gradient(ellipse 40% 40% at 25% 70%, #d3e3d6 0%, rgba(211,227,214,0) 70%),
+      #bcd2c1; }
+  .s-sand { background:
+      radial-gradient(ellipse 55% 50% at 38% 32%, #fff5e6 0%, rgba(255,245,230,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 68%, #caa47f 0%, rgba(202,164,127,0) 70%),
+      radial-gradient(ellipse 40% 40% at 26% 70%, #f1c9ae 0%, rgba(241,201,174,0) 70%),
+      #e8d4bb; }
+  .s-mist { background:
+      radial-gradient(ellipse 55% 50% at 40% 35%, #ffffff 0%, rgba(255,255,255,0) 70%),
+      radial-gradient(ellipse 50% 50% at 65% 70%, #c9dccf 0%, rgba(201,220,207,0) 70%),
+      radial-gradient(ellipse 45% 45% at 25% 65%, #f3dccb 0%, rgba(243,220,203,0) 70%),
+      #e9ebe4; }
 
   /* ---------- strona 1 ---------- */
   .p1-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8mm; align-items: end; margin-top: 12mm; }
@@ -161,7 +159,7 @@
   .part ul { list-style: none; margin-top: 2mm; }
   .part li { font-size: 9pt; line-height: 1.35; padding: 2.2mm 0; border-top: 1px solid var(--line); }
   .part .spacer { flex: 1; min-height: 4mm; }
-  .effect { min-height: 23mm; background: #fff; border-radius: var(--r-sm); padding: 3.5mm 4mm; box-shadow: 0 0 0 1px var(--line); }
+  .effect { min-height: 28.5mm; background: #fff; border-radius: var(--r-sm); padding: 3.5mm 4mm; box-shadow: 0 0 0 1px var(--line); }
   .effect small { display: block; font-size: 8pt; color: var(--stone-400); margin-bottom: 1mm; }
   .effect span { font-size: 9.5pt; line-height: 1.4; }
 
@@ -213,19 +211,18 @@
 
   <div class="panel showcase">
     <div class="tabs">
-      <div class="tab on"><i class="s-orange"></i>Część 1</div>
-      <div class="tab"><i class="s-iris"></i>Część 2</div>
-      <div class="tab"><i class="s-mint"></i>Część 3</div>
+      <div class="tab on"><i class="s-terra"></i>Część 1</div>
+      <div class="tab"><i class="s-forest"></i>Część 2</div>
+      <div class="tab"><i class="s-sage"></i>Część 3</div>
     </div>
     <div class="stage">
       <div class="carousel">
-        <div class="sphere s-mint edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
-        <div class="sphere s-iris" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-orange" style="width:48mm;height:48mm">
-          <span class="play"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z" fill="#000"/></svg></span>
+        <div class="sphere s-sage edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
+        <div class="sphere s-forest" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-terra" style="width:48mm;height:48mm">
         </div>
-        <div class="sphere s-cocoa" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-pearl edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
+        <div class="sphere s-sand" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-mist edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
       </div>
       <div class="cap">
         <div><b>Claude Code</b><span>Folder, który pamięta ustalenia</span></div>
@@ -271,7 +268,7 @@
   </div>
 
   <div class="panel feature">
-    <div class="sphere s-orange" style="width:32mm;height:32mm"></div>
+    <div class="sphere s-terra" style="width:32mm;height:32mm"></div>
     <div>
       <h3>Warsztat, nie wykład</h3>
       <p>Każdy moduł kończy się Twoim gotowym rezultatem. Pracujemy na jednym realistycznym scenariuszu biznesowym, a gdy narzędzie zawiedzie, czekają gotowe wyniki zapasowe.</p>
@@ -291,7 +288,7 @@
 
   <div class="cols3">
     <div class="part">
-      <div class="visual"><div class="sphere s-orange" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-terra" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 1</div>
         <h3>Claude na co dzień</h3>
@@ -309,7 +306,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-iris" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-forest" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 2</div>
         <h3>Claude Code jako biuro projektu</h3>
@@ -327,7 +324,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-mint" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-sage" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 3</div>
         <h3>Pracownia materiałów</h3>
@@ -359,7 +356,7 @@
 
   <div class="modules">
     <div>
-      <div class="phase"><i class="s-orange"></i>Część 1 · Claude na co dzień</div>
+      <div class="phase"><i class="s-terra"></i>Część 1 · Claude na co dzień</div>
       <div class="mod"><span class="n">01</span><div><h4>Konfiguracja i instrukcje globalne</h4><ul><li>Warstwy instrukcji: fakty, założenia, rekomendacje</li><li>Ochrona zweryfikowanych wartości</li><li class="ex"><b>Ćwiczenie:</b> własna instrukcja przetestowana w nowej rozmowie</li></ul></div></div>
       <div class="mod"><span class="n">02</span><div><h4>Projekty i wiedza z dokumentów</h4><ul><li>Instrukcje projektu i mapa źródeł</li><li>Pytania bez pokrycia, sprzeczne i nieaktualne dokumenty</li><li class="ex"><b>Ćwiczenie:</b> projekt, który przyznaje, czego nie wie</li></ul></div></div>
       <div class="mod"><span class="n">03</span><div><h4>Polecenia i krytyka</h4><ul><li>Kontekst, odbiorca, ograniczenia i format wyniku</li><li>Krytyka oddzielona od poprawki</li><li class="ex"><b>Ćwiczenie:</b> polecenie wielokrotnego użytku dla zespołu</li></ul></div></div>
@@ -368,7 +365,7 @@
       <div class="mod"><span class="n">06</span><div><h4>Komunikacja dla odbiorców i kanałów</h4><ul><li>Zarząd, menedżer, sprzedaż; e-mail, ogłoszenie, prezentacja</li><li>Warianty A/B bez niepopartych obietnic</li><li class="ex"><b>Ćwiczenie:</b> pakiet komunikatów z porównaniem wersji</li></ul></div></div>
       <div class="mod"><span class="n">07</span><div><h4>Audio i wideo z AI</h4><ul><li>Narracja lektorska i podkład muzyczny</li><li>Wideo z awatarem i wersją językową</li><li class="ex"><b>Ćwiczenie:</b> porównanie wariantów i plan produkcji</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-iris"></i>Część 2 · Claude Code jako biuro projektu</div>
+      <div class="phase mt"><i class="s-forest"></i>Część 2 · Claude Code jako biuro projektu</div>
       <div class="mod"><span class="n">08</span><div><h4>Przestrzeń robocza i pierwsze zlecenie</h4><ul><li>Folder projektu zamiast czatu: instrukcja główna i skille</li><li>Wersje plików zamiast nadpisywania</li></ul></div></div>
     </div>
 
@@ -380,7 +377,7 @@
       <div class="mod"><span class="n">13</span><div><h4>Zmiana założeń: Twój osąd a osąd AI</h4><ul><li>Najpierw własna ocena skutków, potem porównanie z Claude</li><li>Aktualizacja pamięci z historią decyzji</li></ul></div></div>
       <div class="mod"><span class="n">14</span><div><h4>Dashboard, który pomaga podjąć decyzję</h4><ul><li>Pytania o decyzję i odbiorcę, zanim powstanie wykres</li><li>Trzy persony, te same dane, zapisane założenia</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-mint"></i>Część 3 · Pracownia materiałów</div>
+      <div class="phase mt"><i class="s-sage"></i>Część 3 · Pracownia materiałów</div>
       <div class="mod"><span class="n">15</span><div><h4>Ze zrzutu ekranu do strony www</h4><ul><li>Odtworzenie strony z obrazu</li><li>Własne treści, poprawki układu, kolejne wersje</li></ul></div></div>
       <div class="mod"><span class="n">16</span><div><h4>Identyfikacja wizualna firmy</h4><ul><li>Design system jako skill lub Claude Design</li><li>Kolory, typografia, logo i kontrola zgodności</li></ul></div></div>
       <div class="mod"><span class="n">17</span><div><h4>Animowana zapowiedź</h4><ul><li>Scenariusz, rytm, animacja i efekty</li><li>Spójność ze stroną wydarzenia</li></ul></div></div>
@@ -429,7 +426,7 @@
       <h3>Dopasujemy szkolenie do Waszego zespołu</h3>
       <p>Ćwiczenia możemy oprzeć na Waszych produktach, danych i identyfikacji wizualnej albo wybrać tylko te części, których potrzebujecie.</p>
     </div>
-    <div class="sphere s-iris" style="width:36mm;height:36mm;justify-self:end"></div>
+    <div class="sphere s-forest" style="width:36mm;height:36mm;justify-self:end"></div>
   </div>
 
   <div class="footer"><span>Claude w praktyce biznesowej</span><span>05</span></div>
