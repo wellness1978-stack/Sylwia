@@ -74,32 +74,32 @@
   .sphere::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
     background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.55), rgba(255,255,255,0) 38%),
                 radial-gradient(circle at 70% 85%, rgba(0,0,0,.12), rgba(0,0,0,0) 45%); }
-  /* kolory kul z oryginalnej identyfikacji oferty: zieleń, szałwia, terakota, piasek */
-  .s-terra { background:
-      radial-gradient(ellipse 60% 45% at 62% 30%, #f7c9b0 0%, rgba(247,201,176,0) 70%),
-      radial-gradient(ellipse 55% 60% at 25% 68%, #b9573f 0%, rgba(185,87,63,0) 70%),
-      radial-gradient(ellipse 45% 40% at 78% 74%, #eea184 0%, rgba(238,161,132,0) 70%),
-      #df7c5e; }
-  .s-forest { background:
-      radial-gradient(ellipse 55% 45% at 36% 30%, #9cc7ad 0%, rgba(156,199,173,0) 70%),
-      radial-gradient(ellipse 55% 55% at 68% 66%, #173f33 0%, rgba(23,63,51,0) 70%),
-      radial-gradient(ellipse 40% 38% at 26% 74%, #4f8a6f 0%, rgba(79,138,111,0) 70%),
-      #2c6450; }
-  .s-sage { background:
-      radial-gradient(ellipse 55% 50% at 35% 33%, #f1f5ee 0%, rgba(241,245,238,0) 70%),
-      radial-gradient(ellipse 55% 50% at 66% 66%, #8fb39a 0%, rgba(143,179,154,0) 70%),
-      radial-gradient(ellipse 40% 40% at 25% 70%, #d3e3d6 0%, rgba(211,227,214,0) 70%),
-      #bcd2c1; }
-  .s-sand { background:
-      radial-gradient(ellipse 55% 50% at 38% 32%, #fff5e6 0%, rgba(255,245,230,0) 70%),
-      radial-gradient(ellipse 55% 50% at 66% 68%, #caa47f 0%, rgba(202,164,127,0) 70%),
-      radial-gradient(ellipse 40% 40% at 26% 70%, #f1c9ae 0%, rgba(241,201,174,0) 70%),
-      #e8d4bb; }
-  .s-mist { background:
+  /* kule w odcieniach bordo: wino, merlot, róż, mauve, blush */
+  .s-wine { background:
+      radial-gradient(ellipse 60% 45% at 62% 30%, #e19aa4 0%, rgba(225,154,164,0) 70%),
+      radial-gradient(ellipse 55% 60% at 25% 68%, #4e1022 0%, rgba(78,16,34,0) 70%),
+      radial-gradient(ellipse 45% 40% at 78% 74%, #b24a5c 0%, rgba(178,74,92,0) 70%),
+      #8a2a3e; }
+  .s-merlot { background:
+      radial-gradient(ellipse 55% 45% at 36% 30%, #b0586a 0%, rgba(176,88,106,0) 70%),
+      radial-gradient(ellipse 55% 55% at 68% 66%, #2a0812 0%, rgba(42,8,18,0) 70%),
+      radial-gradient(ellipse 40% 38% at 26% 74%, #7a2236 0%, rgba(122,34,54,0) 70%),
+      #561626; }
+  .s-rose { background:
+      radial-gradient(ellipse 55% 50% at 35% 33%, #fbecec 0%, rgba(251,236,236,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 66%, #b8687a 0%, rgba(184,104,122,0) 70%),
+      radial-gradient(ellipse 40% 40% at 25% 70%, #ecc4c9 0%, rgba(236,196,201,0) 70%),
+      #d9a1aa; }
+  .s-mauve { background:
+      radial-gradient(ellipse 55% 50% at 38% 32%, #f0d9dd 0%, rgba(240,217,221,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 68%, #6e3646 0%, rgba(110,54,70,0) 70%),
+      radial-gradient(ellipse 40% 40% at 26% 70%, #c58f9b 0%, rgba(197,143,155,0) 70%),
+      #a06f7c; }
+  .s-blush { background:
       radial-gradient(ellipse 55% 50% at 40% 35%, #ffffff 0%, rgba(255,255,255,0) 70%),
-      radial-gradient(ellipse 50% 50% at 65% 70%, #c9dccf 0%, rgba(201,220,207,0) 70%),
-      radial-gradient(ellipse 45% 45% at 25% 65%, #f3dccb 0%, rgba(243,220,203,0) 70%),
-      #e9ebe4; }
+      radial-gradient(ellipse 50% 50% at 65% 70%, #e2b9bf 0%, rgba(226,185,191,0) 70%),
+      radial-gradient(ellipse 45% 45% at 25% 65%, #f6e1dc 0%, rgba(246,225,220,0) 70%),
+      #f0dcdc; }
 
   /* ---------- strona 1 ---------- */
   .p1-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8mm; align-items: end; margin-top: 12mm; }
@@ -211,18 +211,18 @@
 
   <div class="panel showcase">
     <div class="tabs">
-      <div class="tab on"><i class="s-terra"></i>Część 1</div>
-      <div class="tab"><i class="s-forest"></i>Część 2</div>
-      <div class="tab"><i class="s-sage"></i>Część 3</div>
+      <div class="tab on"><i class="s-wine"></i>Część 1</div>
+      <div class="tab"><i class="s-merlot"></i>Część 2</div>
+      <div class="tab"><i class="s-rose"></i>Część 3</div>
     </div>
     <div class="stage">
       <div class="carousel">
-        <div class="sphere s-sage edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
-        <div class="sphere s-forest" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-terra" style="width:48mm;height:48mm">
+        <div class="sphere s-rose edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
+        <div class="sphere s-merlot" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-wine" style="width:48mm;height:48mm">
         </div>
-        <div class="sphere s-sand" style="width:36mm;height:36mm"></div>
-        <div class="sphere s-mist edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
+        <div class="sphere s-mauve" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-blush edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
       </div>
       <div class="cap">
         <div><b>Claude Code</b><span>Folder, który pamięta ustalenia</span></div>
@@ -268,7 +268,7 @@
   </div>
 
   <div class="panel feature">
-    <div class="sphere s-terra" style="width:32mm;height:32mm"></div>
+    <div class="sphere s-wine" style="width:32mm;height:32mm"></div>
     <div>
       <h3>Warsztat, nie wykład</h3>
       <p>Każdy moduł kończy się Twoim gotowym rezultatem. Pracujemy na jednym realistycznym scenariuszu biznesowym, a gdy narzędzie zawiedzie, czekają gotowe wyniki zapasowe.</p>
@@ -288,7 +288,7 @@
 
   <div class="cols3">
     <div class="part">
-      <div class="visual"><div class="sphere s-terra" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-wine" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 1</div>
         <h3>Claude na co dzień</h3>
@@ -306,7 +306,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-forest" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-merlot" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 2</div>
         <h3>Claude Code jako biuro projektu</h3>
@@ -324,7 +324,7 @@
       </div>
     </div>
     <div class="part">
-      <div class="visual"><div class="sphere s-sage" style="width:27mm;height:27mm"></div></div>
+      <div class="visual"><div class="sphere s-rose" style="width:27mm;height:27mm"></div></div>
       <div class="body">
         <div class="tag">Część 3</div>
         <h3>Pracownia materiałów</h3>
@@ -356,7 +356,7 @@
 
   <div class="modules">
     <div>
-      <div class="phase"><i class="s-terra"></i>Część 1 · Claude na co dzień</div>
+      <div class="phase"><i class="s-wine"></i>Część 1 · Claude na co dzień</div>
       <div class="mod"><span class="n">01</span><div><h4>Konfiguracja i instrukcje globalne</h4><ul><li>Warstwy instrukcji: fakty, założenia, rekomendacje</li><li>Ochrona zweryfikowanych wartości</li><li class="ex"><b>Ćwiczenie:</b> własna instrukcja przetestowana w nowej rozmowie</li></ul></div></div>
       <div class="mod"><span class="n">02</span><div><h4>Projekty i wiedza z dokumentów</h4><ul><li>Instrukcje projektu i mapa źródeł</li><li>Pytania bez pokrycia, sprzeczne i nieaktualne dokumenty</li><li class="ex"><b>Ćwiczenie:</b> projekt, który przyznaje, czego nie wie</li></ul></div></div>
       <div class="mod"><span class="n">03</span><div><h4>Polecenia i krytyka</h4><ul><li>Kontekst, odbiorca, ograniczenia i format wyniku</li><li>Krytyka oddzielona od poprawki</li><li class="ex"><b>Ćwiczenie:</b> polecenie wielokrotnego użytku dla zespołu</li></ul></div></div>
@@ -365,7 +365,7 @@
       <div class="mod"><span class="n">06</span><div><h4>Komunikacja dla odbiorców i kanałów</h4><ul><li>Zarząd, menedżer, sprzedaż; e-mail, ogłoszenie, prezentacja</li><li>Warianty A/B bez niepopartych obietnic</li><li class="ex"><b>Ćwiczenie:</b> pakiet komunikatów z porównaniem wersji</li></ul></div></div>
       <div class="mod"><span class="n">07</span><div><h4>Audio i wideo z AI</h4><ul><li>Narracja lektorska i podkład muzyczny</li><li>Wideo z awatarem i wersją językową</li><li class="ex"><b>Ćwiczenie:</b> porównanie wariantów i plan produkcji</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-forest"></i>Część 2 · Claude Code jako biuro projektu</div>
+      <div class="phase mt"><i class="s-merlot"></i>Część 2 · Claude Code jako biuro projektu</div>
       <div class="mod"><span class="n">08</span><div><h4>Przestrzeń robocza i pierwsze zlecenie</h4><ul><li>Folder projektu zamiast czatu: instrukcja główna i skille</li><li>Wersje plików zamiast nadpisywania</li></ul></div></div>
     </div>
 
@@ -377,7 +377,7 @@
       <div class="mod"><span class="n">13</span><div><h4>Zmiana założeń: Twój osąd a osąd AI</h4><ul><li>Najpierw własna ocena skutków, potem porównanie z Claude</li><li>Aktualizacja pamięci z historią decyzji</li></ul></div></div>
       <div class="mod"><span class="n">14</span><div><h4>Dashboard, który pomaga podjąć decyzję</h4><ul><li>Pytania o decyzję i odbiorcę, zanim powstanie wykres</li><li>Trzy persony, te same dane, zapisane założenia</li></ul></div></div>
 
-      <div class="phase mt"><i class="s-sage"></i>Część 3 · Pracownia materiałów</div>
+      <div class="phase mt"><i class="s-rose"></i>Część 3 · Pracownia materiałów</div>
       <div class="mod"><span class="n">15</span><div><h4>Ze zrzutu ekranu do strony www</h4><ul><li>Odtworzenie strony z obrazu</li><li>Własne treści, poprawki układu, kolejne wersje</li></ul></div></div>
       <div class="mod"><span class="n">16</span><div><h4>Identyfikacja wizualna firmy</h4><ul><li>Design system jako skill lub Claude Design</li><li>Kolory, typografia, logo i kontrola zgodności</li></ul></div></div>
       <div class="mod"><span class="n">17</span><div><h4>Animowana zapowiedź</h4><ul><li>Scenariusz, rytm, animacja i efekty</li><li>Spójność ze stroną wydarzenia</li></ul></div></div>
@@ -426,7 +426,7 @@
       <h3>Dopasujemy szkolenie do Waszego zespołu</h3>
       <p>Ćwiczenia możemy oprzeć na Waszych produktach, danych i identyfikacji wizualnej albo wybrać tylko te części, których potrzebujecie.</p>
     </div>
-    <div class="sphere s-forest" style="width:36mm;height:36mm;justify-self:end"></div>
+    <div class="sphere s-merlot" style="width:36mm;height:36mm;justify-self:end"></div>
   </div>
 
   <div class="footer"><span>Claude w praktyce biznesowej</span><span>05</span></div>
