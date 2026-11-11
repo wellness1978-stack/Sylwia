@@ -1,0 +1,6 @@
+# surowe posty osób trzecich, nie commitujemy
+data/
+# tokeny
+.env
+__pycache__/
+.DS_Store
