@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Claude in business practice</title>
+<!-- English version of index.html. Same styles; edit both files together. -->
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --bg: #fdfcfc;
+    --cream: #f5f3f1;
+    --stone-200: #ebe8e4;
+    --stone-300: #d7d2cc;
+    --stone-400: #a59f97;
+    --stone-500: #777169;
+    --stone-700: #44403b;
+    --ink: #000000;
+    --line: rgba(0,0,0,.06);
+    --line-strong: rgba(0,0,0,.1);
+    --r-card: 16px;
+    --r-sm: 12px;
+    --gutter: 17mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: "Inter", sans-serif; color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page {
+    width: 210mm; height: 297mm; padding: 16mm var(--gutter) 12mm;
+    position: relative; overflow: hidden; page-break-after: always;
+    display: flex; flex-direction: column; background: var(--bg);
+  }
+  .page:last-child { page-break-after: auto; }
+  
+  .page::before, .page::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line);
+  }
+  .page::before { left: calc(var(--gutter) - 5mm); }
+  .page::after { right: calc(var(--gutter) - 5mm); }
+
+  .eyebrow { font-size: 9.5pt; color: var(--stone-500); line-height: 1.4; }
+  h1, h2, h3 { font-family: "Inter Display", "Inter", sans-serif; font-weight: 300; }
+  h1 { font-size: 46pt; line-height: 1.05; letter-spacing: -0.03em; }
+  h2 { font-size: 29pt; line-height: 1.1; letter-spacing: -0.03em; margin-top: 2.5mm; }
+  h3 { font-size: 15pt; line-height: 1.2; letter-spacing: -0.02em; }
+  .lead { font-size: 11pt; line-height: 1.4; color: var(--stone-700); }
+  .muted { color: var(--stone-500); }
+
+  .head2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10mm; align-items: end; }
+  .head2 .lead { padding-bottom: 1.5mm; }
+
+  .footer {
+    margin-top: auto; padding-top: 4mm; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--stone-400);
+  }
+  .hr { height: 1px; background: var(--line); margin: 0 calc(-1 * var(--gutter)); }
+
+  .btn { display: inline-flex; align-items: center; border-radius: 9999px; font-size: 9.5pt; padding: 2.6mm 5mm; line-height: 1; }
+  .btn.dark { background: var(--ink); color: #fff; }
+  .btn.light { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line-strong); }
+
+  
+  .sphere { border-radius: 50%; position: relative; flex: none; }
+  .sphere::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 32% 26%, rgba(255,255,255,.55), rgba(255,255,255,0) 38%),
+                radial-gradient(circle at 70% 85%, rgba(0,0,0,.12), rgba(0,0,0,0) 45%); }
+  
+  .s-wine { background:
+      radial-gradient(ellipse 60% 45% at 62% 30%, #e19aa4 0%, rgba(225,154,164,0) 70%),
+      radial-gradient(ellipse 55% 60% at 25% 68%, #4e1022 0%, rgba(78,16,34,0) 70%),
+      radial-gradient(ellipse 45% 40% at 78% 74%, #b24a5c 0%, rgba(178,74,92,0) 70%),
+      #8a2a3e; }
+  .s-merlot { background:
+      radial-gradient(ellipse 55% 45% at 36% 30%, #b0586a 0%, rgba(176,88,106,0) 70%),
+      radial-gradient(ellipse 55% 55% at 68% 66%, #2a0812 0%, rgba(42,8,18,0) 70%),
+      radial-gradient(ellipse 40% 38% at 26% 74%, #7a2236 0%, rgba(122,34,54,0) 70%),
+      #561626; }
+  .s-rose { background:
+      radial-gradient(ellipse 55% 50% at 35% 33%, #fbecec 0%, rgba(251,236,236,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 66%, #b8687a 0%, rgba(184,104,122,0) 70%),
+      radial-gradient(ellipse 40% 40% at 25% 70%, #ecc4c9 0%, rgba(236,196,201,0) 70%),
+      #d9a1aa; }
+  .s-mauve { background:
+      radial-gradient(ellipse 55% 50% at 38% 32%, #f0d9dd 0%, rgba(240,217,221,0) 70%),
+      radial-gradient(ellipse 55% 50% at 66% 68%, #6e3646 0%, rgba(110,54,70,0) 70%),
+      radial-gradient(ellipse 40% 40% at 26% 70%, #c58f9b 0%, rgba(197,143,155,0) 70%),
+      #a06f7c; }
+  .s-blush { background:
+      radial-gradient(ellipse 55% 50% at 40% 35%, #ffffff 0%, rgba(255,255,255,0) 70%),
+      radial-gradient(ellipse 50% 50% at 65% 70%, #e2b9bf 0%, rgba(226,185,191,0) 70%),
+      radial-gradient(ellipse 45% 45% at 25% 65%, #f6e1dc 0%, rgba(246,225,220,0) 70%),
+      #f0dcdc; }
+
+  /* ---------- page 1 ---------- */
+  .p1-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 8mm; align-items: end; margin-top: 12mm; }
+  .p1-head .lead { padding-bottom: 2mm; }
+  .p1-actions { display: flex; gap: 2.5mm; margin-top: 7mm; }
+  .panel { background: var(--cream); border-radius: var(--r-card); box-shadow: 0 0 0 1px var(--line); }
+  .showcase { margin-top: 10mm; padding: 1.6mm; flex: 1; display: flex; flex-direction: column; }
+  .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6mm; }
+  .tab { text-align: center; font-size: 9.5pt; padding: 3mm 0; border-radius: var(--r-sm); color: var(--stone-500);
+    display: flex; align-items: center; justify-content: center; gap: 2mm; }
+  .tab.on { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line), 0 1px 2px rgba(0,0,0,.04); }
+  .tab i { width: 2.6mm; height: 2.6mm; border-radius: 50%; display: inline-block; }
+  .stage { flex: 1; margin-top: 1.6mm; border-radius: var(--r-sm); background: var(--cream);
+    box-shadow: inset 0 0 0 1px var(--line); position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center; }
+  .carousel { display: flex; align-items: center; justify-content: center; gap: 8mm; position: relative; }
+  .carousel .edge { opacity: .55; }
+  .cap { text-align: center; margin-top: 6mm; display: grid; grid-template-columns: 1fr 1.25fr 1fr; padding: 0 12mm; gap: 4mm; }
+  .cap b { display: block; font-weight: 400; font-size: 10pt; }
+  .cap span { display: block; font-size: 8pt; color: var(--stone-400); margin-top: 1mm; line-height: 1.35; }
+  .cap .on b { color: var(--ink); }
+  .cap > div:not(.on) b { color: var(--stone-500); }
+  .chips { display: flex; justify-content: center; gap: 1.5mm; margin-top: 8mm; flex-wrap: wrap; padding: 0 6mm; }
+  .chip { font-size: 8.5pt; padding: 2mm 3.5mm; border-radius: 9999px; color: var(--stone-500); }
+  .chip.on { background: #fff; color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8mm; border-top: 1px solid var(--line); }
+  .stat { padding: 4mm 0 0; }
+  .stat + .stat { padding-left: 5mm; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: "Inter Display"; font-weight: 300; font-size: 34pt; letter-spacing: -0.03em; line-height: 1; }
+  .stat span { display: block; font-size: 9pt; color: var(--stone-500); margin-top: 1.5mm; }
+
+  /* ---------- page 2 ---------- */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-top: 9mm; }
+  .card { background: var(--cream); border-radius: var(--r-card); padding: 5mm 5.5mm 5.5mm; box-shadow: 0 0 0 1px var(--line); }
+  .card .num { font-size: 8pt; color: var(--stone-400); font-variant-numeric: tabular-nums; display: block; margin-bottom: 5mm; }
+  .card h3 { margin-bottom: 1.5mm; }
+  .card p { font-size: 9.3pt; line-height: 1.4; color: var(--stone-500); }
+  .section { margin-top: 8mm; }
+  .pills { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 3mm; }
+  .pill { font-size: 9pt; padding: 2mm 4mm; border-radius: 9999px; background: #fff; box-shadow: 0 0 0 1px var(--line-strong); }
+
+  .feature { margin-top: auto; margin-bottom: 6mm; display: grid; grid-template-columns: 34mm 1fr; gap: 7mm;
+    align-items: center; padding: 6mm 7mm; }
+  .feature h3 { font-size: 20pt; letter-spacing: -0.03em; line-height: 1.05; }
+  .feature p { font-size: 9.8pt; line-height: 1.45; color: var(--stone-700); margin-top: 2.5mm; }
+
+  /* ---------- page 3 ---------- */
+  .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-top: 9mm; flex: 1; }
+  .part { background: var(--cream); border-radius: var(--r-card); box-shadow: 0 0 0 1px var(--line);
+    display: flex; flex-direction: column; overflow: hidden; }
+  .part .visual { height: 40mm; display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+  .part .body { padding: 5mm; display: flex; flex-direction: column; flex: 1; }
+  .part .tag { font-size: 8.5pt; color: var(--stone-500); }
+  .part h3 { margin-top: 1mm; min-height: 2.4em; }
+  .part .desc { font-size: 9pt; line-height: 1.4; color: var(--stone-500); margin-top: 1.5mm; min-height: 13mm; }
+  .part ul { list-style: none; margin-top: 2mm; }
+  .part li { font-size: 9pt; line-height: 1.35; padding: 2.2mm 0; border-top: 1px solid var(--line); }
+  .part .spacer { flex: 1; min-height: 4mm; }
+  .effect { min-height: 34mm; background: #fff; border-radius: var(--r-sm); padding: 3.5mm 4mm; box-shadow: 0 0 0 1px var(--line); }
+  .effect small { display: block; font-size: 8pt; color: var(--stone-400); margin-bottom: 1mm; }
+  .effect span { font-size: 9.5pt; line-height: 1.4; }
+
+  /* ---------- page 4 ---------- */
+  .modules { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; margin-top: 7mm; }
+  .phase { display: inline-flex; align-items: center; gap: 2mm; background: var(--ink); color: #fff;
+    border-radius: 9999px; font-size: 8pt; padding: 1.8mm 3.8mm; margin: 0 0 2.5mm; }
+  .phase i { width: 2.2mm; height: 2.2mm; border-radius: 50%; display: inline-block; }
+  .phase.mt { margin-top: 3mm; }
+  .mod { display: grid; grid-template-columns: 7mm 1fr; padding: 1.7mm 0 1.9mm; border-top: 1px solid var(--line); }
+  .mod .n { font-size: 8pt; color: var(--stone-400); font-variant-numeric: tabular-nums; padding-top: .6mm; }
+  .mod h4 { font-size: 9.6pt; font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; }
+  .mod ul { list-style: none; margin-top: .8mm; }
+  .mod li { font-size: 8pt; line-height: 1.38; color: var(--stone-500); padding-left: 3mm; position: relative; }
+  .mod li::before { content: ""; position: absolute; left: 0; top: 1.55mm; width: 1.1mm; height: 1.1mm; border-radius: 50%; background: var(--stone-300); }
+  .mod li.ex { color: var(--stone-700); }
+  .mod li.ex::before { background: var(--ink); }
+  .mod li.ex b { font-weight: 500; color: var(--ink); }
+
+  /* ---------- page 5 ---------- */
+  .checks { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; margin-top: 8mm; }
+  .checks div { display: flex; gap: 3mm; align-items: flex-start; font-size: 10.5pt; line-height: 1.4; padding: 4mm 0; border-bottom: 1px solid var(--line); }
+  .tick { width: 5mm; height: 5mm; border-radius: 50%; background: var(--ink); flex: none; display: grid; place-items: center; margin-top: .3mm; }
+  .tick svg { width: 2.9mm; height: 2.9mm; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin-top: 9mm; }
+  .fact { background: var(--cream); border-radius: var(--r-sm); padding: 4mm; box-shadow: 0 0 0 1px var(--line); }
+  .fact small { display: block; font-size: 8pt; color: var(--stone-500); margin-bottom: 1.2mm; }
+  .fact b { font-size: 10pt; font-weight: 500; line-height: 1.3; display: block; }
+  .prep { margin-top: 8mm; }
+  .prep p { margin-top: 2mm; font-size: 10pt; line-height: 1.45; color: var(--stone-700); max-width: 165mm; }
+  .cta { margin-top: auto; margin-bottom: 6mm; padding: 8mm; display: grid; grid-template-columns: 1fr 38mm; gap: 6mm; align-items: center; }
+  .cta h3 { font-size: 23pt; letter-spacing: -0.03em; line-height: 1.08; }
+  .cta p { font-size: 10pt; line-height: 1.45; color: var(--stone-700); margin-top: 3mm; max-width: 120mm; }
+  .contact { display: flex; align-items: center; gap: 4mm; margin-top: 6mm; padding-top: 5mm; border-top: 1px solid var(--line-strong); }
+  .contact-label { font-size: 11pt; color: var(--ink); }
+  .contact .btn { text-decoration: none; font-size: 11pt; padding: 3mm 6mm; letter-spacing: .01em; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="eyebrow">Training program</div>
+  <div class="p1-head">
+    <h1>Claude in business practice</h1>
+    <p class="lead">From your first prompt to finished materials. Hands-on AI workshops for teams, no coding required.</p>
+  </div>
+  <div class="p1-actions">
+    <span class="btn dark">Hands-on workshops</span>
+    <span class="btn light">On-site or online</span>
+  </div>
+
+  <div class="panel showcase">
+    <div class="tabs">
+      <div class="tab on"><i class="s-wine"></i>Part 1</div>
+      <div class="tab"><i class="s-merlot"></i>Part 2</div>
+      <div class="tab"><i class="s-rose"></i>Part 3</div>
+    </div>
+    <div class="stage">
+      <div class="carousel">
+        <div class="sphere s-rose edge" style="width:24mm;height:24mm;margin-left:-14mm"></div>
+        <div class="sphere s-merlot" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-wine" style="width:48mm;height:48mm">
+        </div>
+        <div class="sphere s-mauve" style="width:36mm;height:36mm"></div>
+        <div class="sphere s-blush edge" style="width:24mm;height:24mm;margin-right:-14mm"></div>
+      </div>
+      <div class="cap">
+        <div><b>Claude Code</b><span>A folder that remembers what was agreed</span></div>
+        <div class="on"><b>Everyday Claude ↗</b><span>Settings, prompts and research that produce reliable results</span></div>
+        <div><b>Studio</b><span>Website, invitation and animation</span></div>
+      </div>
+      <div class="chips">
+        <span class="chip on">Instructions</span><span class="chip">Projects</span><span class="chip">Research</span><span class="chip">Dashboard</span><span class="chip">Messaging</span><span class="chip">Audio and video</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>20</b><span>hands-on modules</span></div>
+    <div class="stat"><b>3</b><span>levels of working with AI</span></div>
+    <div class="stat"><b>0</b><span>lines of code to write</span></div>
+  </div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="eyebrow">Why it's worth it</div>
+  <div class="head2">
+    <h2>AI that actually saves time</h2>
+    <p class="lead">Most teams use AI ad hoc and spend a long time fixing the results. After the training you work deliberately: faster, with more confidence, and with results you can show.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><span class="num">01</span><h3>Less rework</h3><p>You set Claude up once and get predictable results in every conversation.</p></div>
+    <div class="card"><span class="num">02</span><h3>Facts, not fabrications</h3><p>You check the AI's sources and claims before you send anything on.</p></div>
+    <div class="card"><span class="num">03</span><h3>Finished materials, not drafts</h3><p>Dashboards, documents, websites and animations are created from plain-language prompts.</p></div>
+    <div class="card"><span class="num">04</span><h3>AI that remembers</h3><p>A project with memory and procedures: you don't explain everything from scratch.</p></div>
+    <div class="card"><span class="num">05</span><h3>A shared team standard</h3><p>The same instructions, sources and verification rules for everyone.</p></div>
+    <div class="card"><span class="num">06</span><h3>No coding</h3><p>You do everything through conversation. All you need is a laptop and a Claude account.</p></div>
+  </div>
+
+  <div class="section">
+    <div class="eyebrow">Who it's for</div>
+    <div class="pills">
+      <span class="pill">Marketing</span><span class="pill">Sales</span><span class="pill">Communications</span><span class="pill">HR</span><span class="pill">Product</span><span class="pill">Operations</span><span class="pill">Analytics</span><span class="pill">Administration</span>
+    </div>
+    <p class="lead" style="margin-top:3.5mm;font-size:10pt">For specialists and managers who use AI occasionally and want to do it well.</p>
+  </div>
+
+  <div class="panel feature">
+    <div class="sphere s-wine" style="width:32mm;height:32mm"></div>
+    <div>
+      <h3>A workshop, not a lecture</h3>
+      <p>Every module ends with a finished result of your own. We work on one realistic business scenario, and if a tool fails, backup results are ready.</p>
+    </div>
+  </div>
+
+  <div class="footer"><span>Claude in business practice</span><span>02</span></div>
+</section>
+
+<!-- ============ PAGE 3 ============ -->
+<section class="page">
+  <div class="eyebrow">What the training covers</div>
+  <div class="head2">
+    <h2>Three parts, one goal</h2>
+    <p class="lead">Each part builds on the previous one: from everyday work in Claude, through your own workspace, to a complete set of finished materials.</p>
+  </div>
+
+  <div class="cols3">
+    <div class="part">
+      <div class="visual"><div class="sphere s-wine" style="width:27mm;height:27mm"></div></div>
+      <div class="body">
+        <div class="tag">Part 1</div>
+        <h3>Everyday Claude</h3>
+        <p class="desc">Settings, prompts and research that produce reliable results.</p>
+        <ul>
+          <li>Instructions and projects with a knowledge base</li>
+          <li>Reusable prompts</li>
+          <li>Research with verified sources</li>
+          <li>Dashboard from CSV data</li>
+          <li>Messages for different audiences</li>
+          <li>AI audio and video</li>
+        </ul>
+        <div class="spacer"></div>
+        <div class="effect"><small>Outcome</small><span>A shorter path from question to reliable answer.</span></div>
+      </div>
+    </div>
+    <div class="part">
+      <div class="visual"><div class="sphere s-merlot" style="width:27mm;height:27mm"></div></div>
+      <div class="body">
+        <div class="tag">Part 2</div>
+        <h3>Claude Code as a project office</h3>
+        <p class="desc">A folder that remembers what was agreed and checks the facts.</p>
+        <ul>
+          <li>A workspace without the terminal</li>
+          <li>Project memory across conversations</li>
+          <li>Skills: your team's procedures</li>
+          <li>A proposal with critique and visualization</li>
+          <li>Changing assumptions without chaos</li>
+          <li>A dashboard for decision-making</li>
+        </ul>
+        <div class="spacer"></div>
+        <div class="effect"><small>Outcome</small><span>A project that remembers what was agreed instead of starting from scratch.</span></div>
+      </div>
+    </div>
+    <div class="part">
+      <div class="visual"><div class="sphere s-rose" style="width:27mm;height:27mm"></div></div>
+      <div class="body">
+        <div class="tag">Part 3</div>
+        <h3>Materials studio</h3>
+        <p class="desc">A website, invitation and animation from plain-language prompts.</p>
+        <ul>
+          <li>A website from a screenshot</li>
+          <li>Materials that match your brand identity</li>
+          <li>Animated teaser</li>
+          <li>One change across all files</li>
+          <li>A 30-day trend radar</li>
+          <li>Results showcase and rollout plan</li>
+        </ul>
+        <div class="spacer"></div>
+        <div class="effect"><small>Outcome</small><span>Finished materials in hours, not weeks.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span>Claude in business practice</span><span>03</span></div>
+</section>
+
+<!-- ============ PAGE 4 ============ -->
+<section class="page">
+  <div class="eyebrow">Training program</div>
+  <div class="head2">
+    <h2>Modules and topics</h2>
+    <p class="lead">20 modules in three parts. Each module is a hands-on exercise and a result the participant keeps.</p>
+  </div>
+
+  <div class="modules">
+    <div>
+      <div class="phase"><i class="s-wine"></i>Part 1 · Everyday Claude</div>
+      <div class="mod"><span class="n">01</span><div><h4>Setup and global instructions</h4><ul><li>Instruction layers: facts, assumptions, recommendations</li><li>Protecting verified values</li><li class="ex"><b>Exercise:</b> your own instruction tested in a new conversation</li></ul></div></div>
+      <div class="mod"><span class="n">02</span><div><h4>Projects and knowledge from documents</h4><ul><li>Project instructions and a source map</li><li>Unanswerable questions, conflicting and outdated documents</li><li class="ex"><b>Exercise:</b> a project that admits what it doesn't know</li></ul></div></div>
+      <div class="mod"><span class="n">03</span><div><h4>Prompts and critique</h4><ul><li>Context, audience, constraints and output format</li><li>Critique kept separate from revision</li><li class="ex"><b>Exercise:</b> a reusable prompt for the team</li></ul></div></div>
+      <div class="mod"><span class="n">04</span><div><h4>Research with verified sources</h4><ul><li>Perplexity, NotebookLM, Google AI Studio</li><li>Citation audit: supported and unsupported claims</li><li class="ex"><b>Exercise:</b> choosing the right tool for a specific task</li></ul></div></div>
+      <div class="mod"><span class="n">05</span><div><h4>Dashboard from CSV data</h4><ul><li>Field definitions, missing data, manual reconciliation of figures</li><li>Metrics, a chart and a filter</li><li class="ex"><b>Exercise:</b> a dashboard with a change log</li></ul></div></div>
+      <div class="mod"><span class="n">06</span><div><h4>Communication for audiences and channels</h4><ul><li>Executives, managers, sales; email, announcement, presentation</li><li>A/B variants without unsupported promises</li><li class="ex"><b>Exercise:</b> a message pack with a version comparison</li></ul></div></div>
+      <div class="mod"><span class="n">07</span><div><h4>AI audio and video</h4><ul><li>Voiceover narration and background music</li><li>Video with an avatar and a language version</li><li class="ex"><b>Exercise:</b> a comparison of variants and a production plan</li></ul></div></div>
+
+      <div class="phase mt"><i class="s-merlot"></i>Part 2 · Claude Code as a project office</div>
+      <div class="mod"><span class="n">08</span><div><h4>Workspace and first assignment</h4><ul><li>A project folder instead of a chat: main instruction and skills</li><li>File versions instead of overwriting</li></ul></div></div>
+    </div>
+
+    <div>
+      <div class="mod" style="border-top:0"><span class="n">09</span><div><h4>Sources: what you read vs. what the AI reads</h4><ul><li>Live page vs. notes, honest source labeling</li><li>Verified facts saved in the project</li></ul></div></div>
+      <div class="mod"><span class="n">10</span><div><h4>Project memory</h4><ul><li>Memory as plain files: save, view, edit</li><li>Facts vs. decisions, change history</li></ul></div></div>
+      <div class="mod"><span class="n">11</span><div><h4>Skills: your team's procedures</h4><ul><li>Grill Me: better questions before the work starts</li><li>Verifying claims and modifying a skill</li></ul></div></div>
+      <div class="mod"><span class="n">12</span><div><h4>Proposal: choice, critique, visualization</h4><ul><li>Comparing variants and critique</li><li>A visual version in the browser or in Claude Design</li></ul></div></div>
+      <div class="mod"><span class="n">13</span><div><h4>Changing assumptions: your judgment vs. AI</h4><ul><li>First your own impact assessment, then a comparison with Claude</li><li>Updating memory with a decision history</li></ul></div></div>
+      <div class="mod"><span class="n">14</span><div><h4>A dashboard that helps you decide</h4><ul><li>Questions about the decision and the audience before any chart is built</li><li>Three personas, the same data, documented assumptions</li></ul></div></div>
+
+      <div class="phase mt"><i class="s-rose"></i>Part 3 · Materials studio</div>
+      <div class="mod"><span class="n">15</span><div><h4>From screenshot to website</h4><ul><li>Recreating a page from an image</li><li>Your own content, layout fixes, further versions</li></ul></div></div>
+      <div class="mod"><span class="n">16</span><div><h4>Company brand identity</h4><ul><li>A design system as a skill or Claude Design</li><li>Colors, typography, logo and consistency checks</li></ul></div></div>
+      <div class="mod"><span class="n">17</span><div><h4>Animated teaser</h4><ul><li>Script, pacing, animation and effects</li><li>Consistency with the event page</li></ul></div></div>
+      <div class="mod"><span class="n">18</span><div><h4>One change everywhere</h4><ul><li>One prompt updates the website, invitation and teaser</li><li>Before-and-after comparison</li></ul></div></div>
+      <div class="mod"><span class="n">19</span><div><h4>30-day trend radar</h4><ul><li>Sourced research and topic synthesis</li><li>Takeaways for communication</li></ul></div></div>
+      <div class="mod"><span class="n">20</span><div><h4>Showcase and rollout plan</h4><ul><li>Presenting results and a list of items to verify</li><li>First application in your own work</li></ul></div></div>
+    </div>
+  </div>
+
+  <div class="footer"><span>Claude in business practice</span><span>04</span></div>
+</section>
+
+<!-- ============ PAGE 5 ============ -->
+<section class="page">
+  <div class="eyebrow">What you take away</div>
+  <div class="head2">
+    <h2>Finished work, not just knowledge</h2>
+    <p class="lead">Everything you create during the training stays with you and is ready to use right away.</p>
+  </div>
+
+  <div class="checks">
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Your own instruction for Claude</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A project with a knowledge base and a source map</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A set of tested prompts</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A working dashboard built from data</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A message pack for different audiences</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A working folder with memory and skills</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A website, invitation and animated teaser</div>
+    <div><span class="tick"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>A plan for your first rollout at work</div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><small>Format</small><b>Hands-on workshops</b></div>
+    <div class="fact"><small>Delivery</small><b>On-site or online</b></div>
+    <div class="fact"><small>Level</small><b>From the basics</b></div>
+    <div class="fact"><small>Materials</small><b>PL / EN</b></div>
+  </div>
+
+  <div class="prep">
+    <div class="eyebrow">What to prepare</div>
+    <p>A laptop, a Claude account on a plan that includes Projects and Claude Code, and Visual Studio Code with the Claude Code extension. We send installation instructions before the training.</p>
+  </div>
+
+  <div class="panel cta">
+    <div>
+      <h3>We'll tailor the training to your team</h3>
+      <p>We can base the exercises on your products, data and brand identity, or select only the parts you need.</p>
+      <!-- CONTACT: filled in by build.js from kontakt.local.json (kept out of the repo) -->
+      <div class="contact">
+        <span class="contact-label">{{KONTAKT_TEKST}}</span>
+        <a class="btn dark" href="tel:{{TELEFON_HREF}}">{{TELEFON}}</a>
+      </div>
+    </div>
+    <div class="sphere s-merlot" style="width:36mm;height:36mm;justify-self:end"></div>
+  </div>
+
+  <div class="footer"><span>Claude in business practice</span><span>05</span></div>
+</section>
+
+</body>
+</html>
